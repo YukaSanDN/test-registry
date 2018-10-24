@@ -15,13 +15,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistryComponent,
     AuthorizationComponent,
-    AuthModalComponent
+    AuthModalComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatListModule
   ],
   entryComponents: [
     AuthModalComponent,

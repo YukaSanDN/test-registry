@@ -43,6 +43,7 @@ export class RegistryComponent implements OnInit {
     Validators.required,
     PasswordConfirmValidator( this.strObject )
   ]); // passwordConfirmFormControl
+
   constructor(private registrationDialog: MatDialog) {
     this.strObject.str = this.passwordFormControl.value;
   } // constructor

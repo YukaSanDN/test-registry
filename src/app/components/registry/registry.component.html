@@ -23,7 +23,7 @@
         <mat-form-field class="example-full-width col-12">
           <input name="userName" matInput placeholder="Имя"  value="" [formControl]="nameFormControl">
           <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
-            Введите корректный имя. Длина от 2 до 25 символов
+            Введите корректное имя. Длина от 2 до 25 символов
           </mat-error>
           <mat-error *ngIf="nameFormControl.hasError('required')">
             Имя <strong>обязателен</strong>
@@ -32,7 +32,7 @@
         <mat-form-field class="example-full-width col-12">
           <input name="userLastname" matInput placeholder="Фамилия" [formControl]="lastNameFormControl">
           <mat-error *ngIf="lastNameFormControl.hasError('pattern') && !lastNameFormControl.hasError('required')">
-            Введите корректный фамилию. Длина от 2 до 25 латинских символов
+            Введите корректную фамилию. Длина от 2 до 25 латинских символов
           </mat-error>
           <mat-error *ngIf="lastNameFormControl.hasError('required')">
             фамилия <strong>обязателен</strong>
