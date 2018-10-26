@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthModalComponent } from '../../modals/auth.modal/auth.modal.component';
 import {PasswordConfirmValidator} from '../../Validators/PasswordValidator';
 import { stringObject} from '../../model/stringObject/stringObject';
+import { RegistryServiceService } from '../../service/registryService/registry-service.service';
+import {User} from '../../model/User/User';
 
 @Component({
   selector: 'app-registry',
@@ -11,6 +13,8 @@ import { stringObject} from '../../model/stringObject/stringObject';
   styleUrls: ['./registry.component.css']
 })
 export class RegistryComponent implements OnInit {
+
+  private user: User = new User();
 
   public strObject: stringObject = new stringObject();
 
@@ -34,6 +38,11 @@ export class RegistryComponent implements OnInit {
     Validators.email,
   ]); // emailFormControl
 
+  public  phoneFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/)
+  ]); // phoneFormControl
+
   public passwordFormControl = new FormControl('', [
     Validators.required,
   ]); // passwordFormControl
@@ -44,7 +53,10 @@ export class RegistryComponent implements OnInit {
     PasswordConfirmValidator( this.strObject )
   ]); // passwordConfirmFormControl
 
-  constructor(private registrationDialog: MatDialog) {
+  constructor(
+    private registrationDialog: MatDialog,
+    private registryServise: RegistryServiceService
+  ) {
     this.strObject.str = this.passwordFormControl.value;
   } // constructor
 
@@ -68,8 +80,10 @@ export class RegistryComponent implements OnInit {
       this.lastNameFormControl.valid &&
       this.loginFormControl.valid &&
       this.emailFormControl.valid &&
+      this.phoneFormControl.valid &&
       this.passwordFormControl.valid &&
       this.passwordConfirmFormControl.valid;
+
 
   }// checkAllFields
 
@@ -77,7 +91,9 @@ export class RegistryComponent implements OnInit {
 
 
     if ( this.checkAllFields() === true ){
-      // AJAX REGISTER REQUEST
+      const respone = this.registryServise.postRegistryUser(this.user);
+
+      console.log(respone);
     }// if
     else {
       this.openDialog('Не все поля заполнены корректно');

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 // MY-COMPONENT
 import { RegistryComponent } from './components/registry/registry.component';
 import { AuthModalComponent } from './modals/auth.modal/auth.modal.component';
@@ -18,6 +20,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+
+// SERVISE
+
+import {RegistryServiceService} from './service/registryService/registry-service.service';
 
 @NgModule({
   declarations: [
@@ -38,13 +44,16 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatDialogModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   entryComponents: [
     AuthModalComponent,
 
   ],
-  providers: [],
+  providers: [
+    RegistryServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
