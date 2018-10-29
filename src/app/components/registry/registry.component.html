@@ -11,7 +11,7 @@
         </div>
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userLogin" matInput placeholder="Логин"  [formControl]="loginFormControl">
+          <input name="userLogin" matInput placeholder="Логин" [(ngModel)]="user.userLogin" [formControl]="loginFormControl">
           <mat-error *ngIf="loginFormControl.hasError('pattern') && !loginFormControl.hasError('required')">
             Введите корректный логин. Длина от 4 до 20 латинских символов
           </mat-error>
@@ -21,18 +21,18 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userName" matInput placeholder="Имя"  value="" [formControl]="nameFormControl">
+          <input name="userName" matInput placeholder="Имя"  [(ngModel)]="user.userName" [formControl]="nameFormControl">
           <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
-            Введите корректный имя. Длина от 2 до 25 символов
+            Введите корректное имя. Длина от 2 до 25 символов
           </mat-error>
           <mat-error *ngIf="nameFormControl.hasError('required')">
             Имя <strong>обязателен</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width col-12">
-          <input name="userLastname" matInput placeholder="Фамилия" [formControl]="lastNameFormControl">
+          <input name="userLastname" matInput placeholder="Фамилия" [(ngModel)]="user.userLastName" [formControl]="lastNameFormControl">
           <mat-error *ngIf="lastNameFormControl.hasError('pattern') && !lastNameFormControl.hasError('required')">
-            Введите корректный фамилию. Длина от 2 до 25 латинских символов
+            Введите корректную фамилию. Длина от 2 до 25 латинских символов
           </mat-error>
           <mat-error *ngIf="lastNameFormControl.hasError('required')">
             фамилия <strong>обязателен</strong>
@@ -41,7 +41,7 @@
 
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userEmail" matInput placeholder="Email"  [formControl]="emailFormControl">
+          <input name="userEmail" matInput placeholder="Email" [(ngModel)]="user.userEmail" [formControl]="emailFormControl">
           <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             пожалуйстя введите корректный Email
           </mat-error>
@@ -51,14 +51,24 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userPassword" matInput type="password" placeholder="Пароль" [(ngModel)] = "strObject.str" [formControl]="passwordFormControl">
+          <input name="userPhone" matInput placeholder="Phone" [(ngModel)]="user.userPhone" [formControl]="phoneFormControl">
+          <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+            пожалуйстя введите корректный телефон пример «+38(044)555-55-55»
+          </mat-error>
+          <mat-error *ngIf="phoneFormControl.hasError('required')">
+            email <strong>обязателен</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width col-12">
+          <input name="userPassword" matInput type="password" placeholder="Пароль"  [(ngModel)] = "strObject.str" [formControl]="passwordFormControl">
           <mat-error *ngIf="passwordFormControl.hasError('required')">
             Пароль <strong>обязателен</strong>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userConfirmPassword" matInput type="password" placeholder="Подтвердите пароль"  [formControl]="passwordConfirmFormControl">
+          <input name="userConfirmPassword" matInput type="password" placeholder="Подтвердите пароль" [(ngModel)]="user.userPassword" [formControl]="passwordConfirmFormControl">
           <mat-error *ngIf="passwordConfirmFormControl.hasError('required')">
             Пароль <strong>обязателен</strong>
           </mat-error>

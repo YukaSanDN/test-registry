@@ -1,0 +1,15 @@
+.defaultStyle{
+  padding: 0px;
+  margin: 0px;
+}
+.text-header-decoration{
+  font-size: 35px;
+}
+.container-position{
+  margin-top: 5%;
+}
+
+.headerStyle{
+  background-color: #8a8c8e;
+  color: #e8eaed;
+}

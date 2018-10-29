@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {RegistryComponent} from './components/registry/registry.component';
 import {AuthorizationComponent} from './components/authorization/authorization.component';
+import {UserCardComponent} from './components/user-card/user-card.component';
 const routes: Routes = [
 
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'authorization',
     component: AuthorizationComponent
+  },
+  {
+    path: 'user',
+    component: UserCardComponent
   },
   {
     path: '**',

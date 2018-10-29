@@ -1,0 +1,40 @@
+<div class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-4 col-xl-4 ">
+      <mat-card class="example-card mat-elevation-z16 form-auth container-position defaultStyle">
+        <mat-card-header class="headerStyle">
+          <mat-card-title class="text-header-decoration">{{user.userLogin}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list">
+            <mat-list-item style="font-weight: bold" role="listitem">{{user.userName}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item style="font-weight: bold" role="listitem">{{user.userLastName}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item style="font-weight: bold" role="listitem">{{user.userEmail}}</mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item style="font-weight: bold" role="listitem">{{user.dateregistration}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 text-center">
+              <a routerLink="/authorization">Aвторизация</a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-6 text-center"  >
+              <a routerLink="/registy">Регистрация</a>
+            </div>
+          </div>
+
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+
+

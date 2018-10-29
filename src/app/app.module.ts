@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 // MY-COMPONENT
 import { RegistryComponent } from './components/registry/registry.component';
 import { AuthModalComponent } from './modals/auth.modal/auth.modal.component';
@@ -15,13 +17,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+
+// SERVISE
+
+import {RegistryServiceService} from './service/registryService/registry-service.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistryComponent,
     AuthorizationComponent,
-    AuthModalComponent
+    AuthModalComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,13 +42,18 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatListModule,
+    HttpClientModule
   ],
   entryComponents: [
     AuthModalComponent,
 
   ],
-  providers: [],
+  providers: [
+    RegistryServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
