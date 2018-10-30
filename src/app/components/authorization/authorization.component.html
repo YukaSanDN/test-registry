@@ -11,7 +11,7 @@
         </div>
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userLogin" matInput placeholder="Логин"  [formControl]="loginFormControl">
+          <input name="userLogin" matInput placeholder="Логин"   [(ngModel)]="user.userLogin" [formControl]="loginFormControl">
           <mat-error *ngIf="loginFormControl.hasError('pattern') && !loginFormControl.hasError('required')">
             Введите корректный логин. Длина от 4 до 20 латинских символов
           </mat-error>
@@ -22,7 +22,7 @@
 
 
         <mat-form-field class="example-full-width col-12">
-          <input name="userPassword" matInput type="password" placeholder="Пароль"  [formControl]="passwordFormControl">
+          <input name="userPassword" matInput type="password" placeholder="Пароль" [(ngModel)]="user.userPassword" [formControl]="passwordFormControl">
           <mat-error *ngIf="passwordFormControl.hasError('required')">
             Пароль <strong>обязателен</strong>
           </mat-error>
@@ -32,7 +32,7 @@
         <div class="row justify-content-center container-position" style="width: 100%">
 
           <div  class="col-12 text-center button-row" style="width: 100%">
-            <button class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8" mat-raised-button color="primary">Aвторизация</button>
+            <button class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8" (click)="authoriza()" mat-raised-button color="primary">Aвторизация</button>
           </div>
           <div class="class=col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center" style="width: 100%; margin: 3%">
             <a routerLink="/registy" >Регистрация</a>

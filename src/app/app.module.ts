@@ -10,20 +10,22 @@ import { HttpClientModule } from '@angular/common/http';
 // MY-COMPONENT
 import { RegistryComponent } from './components/registry/registry.component';
 import { AuthModalComponent } from './modals/auth.modal/auth.modal.component';
+import { AuthorizationComponent } from './components/authorization/authorization.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 // ANGULAR MATERIAL
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import { AuthorizationComponent } from './components/authorization/authorization.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { UserCardComponent } from './components/user-card/user-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
 // SERVISE
 
-import {RegistryServiceService} from './service/registryService/registry-service.service';
+import {RegistryService} from './service/registryService/registry-service.service';
+import {AuthService} from './service/authService/auth-service.service';
 
 @NgModule({
   declarations: [
@@ -45,15 +47,18 @@ import {RegistryServiceService} from './service/registryService/registry-service
     MatDialogModule,
     MatCardModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     AuthModalComponent,
-
   ],
   providers: [
-    RegistryServiceService
+    RegistryService,
+    AuthService
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

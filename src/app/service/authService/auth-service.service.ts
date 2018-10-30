@@ -5,25 +5,21 @@ import { resMessage } from '../../model/responeMessage/responeMessage';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistryService {
+export class AuthService {
 
   constructor(
     private hClient: HttpClient
   ) { }
 
-  postRegistryUser(user: User): Promise< resMessage > {
+  postAuth(user: User): Promise< resMessage > {
     const Body = new HttpParams()
       .set('login' , user.userLogin )
-      .set('name' , user.userName )
-      .set('lastName', user.userLastName )
-      .set('email', user.userEmail )
-      .set('phone', user.userPhone )
-      // .set('birthday', user.userBirthday )
+      .set('password', user.userPassword);
 
     return this.hClient.post(`localhost:3000/api/registy`, {
       body : Body
     })
       .toPromise() as Promise<resMessage>;
 
-  } // postRegistryUser
-}
+  } // postAuth
+}// AuthServicee

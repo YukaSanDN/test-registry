@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl , Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthModalComponent } from '../../modals/auth.modal/auth.modal.component';
 import {PasswordConfirmValidator} from '../../Validators/PasswordValidator';
 import { stringObject} from '../../model/stringObject/stringObject';
-import { RegistryServiceService } from '../../service/registryService/registry-service.service';
+import { RegistryService } from '../../service/registryService/registry-service.service';
 import {User} from '../../model/User/User';
 
 @Component({
@@ -12,8 +12,8 @@ import {User} from '../../model/User/User';
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.css']
 })
-export class RegistryComponent implements OnInit {
 
+export class RegistryComponent implements OnInit {
   private user: User = new User();
 
   public strObject: stringObject = new stringObject();
@@ -32,6 +32,10 @@ export class RegistryComponent implements OnInit {
     Validators.required,
     Validators.pattern(/^[a-z  0-9]{4,20}$/i),
   ]); // loginFormControl
+
+  public dataFormControl = new FormControl('', [
+    Validators.required,
+  ]); // dataFormControl
 
   public  emailFormControl = new FormControl('', [
     Validators.required,
@@ -55,21 +59,29 @@ export class RegistryComponent implements OnInit {
 
   constructor(
     private registrationDialog: MatDialog,
-    private registryServise: RegistryServiceService
+    private registryService: RegistryService
   ) {
     this.strObject.str = this.passwordFormControl.value;
   } // constructor
 
   ngOnInit() {
 
-
   } // ngOnInit
 
-  openDialog( msg: string ) {
+  focuse(event){
+    console.log(event);
+  }
+  /*countryModelChange(event){
+
+    console.log(event);
+  }*/
+
+  openDialog( msg: string , path: string) {
 
     this.registrationDialog.open(AuthModalComponent, {
       data: {
-        message: msg
+        message: msg,
+        pathRedirect: path
       }
     });
   }// openDialog
@@ -87,16 +99,31 @@ export class RegistryComponent implements OnInit {
 
   }// checkAllFields
 
-  registry() {
+ async registry() {
 
 
     if ( this.checkAllFields() === true ){
-      const respone = this.registryServise.postRegistryUser(this.user);
+      const respone = await this.registryService.postRegistryUser(this.user);
+
+      if ( respone.code === 200){
+        this.openDialog(
+          respone.message,
+          "http://localhost:4200/authorization" );
+
+      }
+      else{
+        this.openDialog(
+          <string>respone.message ,
+          null);
+      }
+
 
       console.log(respone);
     }// if
     else {
-      this.openDialog('Не все поля заполнены корректно');
+      this.openDialog(
+        'Не все поля заполнены корректно',
+        null);
     }// else
 
   }// registry

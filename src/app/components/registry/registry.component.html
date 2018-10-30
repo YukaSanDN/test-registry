@@ -26,7 +26,7 @@
             Введите корректное имя. Длина от 2 до 25 символов
           </mat-error>
           <mat-error *ngIf="nameFormControl.hasError('required')">
-            Имя <strong>обязателен</strong>
+            Имя <strong>обязательно</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width col-12">
@@ -35,10 +35,18 @@
             Введите корректную фамилию. Длина от 2 до 25 латинских символов
           </mat-error>
           <mat-error *ngIf="lastNameFormControl.hasError('required')">
-            фамилия <strong>обязателен</strong>
+            фамилия <strong>обязателна</strong>
           </mat-error>
         </mat-form-field>
 
+        <mat-form-field class="col-12" >
+          <input matInput [matDatepicker]="dp4"  placeholder="Дата рождения" disabled   [(ngModel)]="user.userBirthday">
+          <mat-datepicker-toggle matSuffix [for]="dp4" ></mat-datepicker-toggle>
+          <mat-datepicker #dp4 disabled="false" ></mat-datepicker>
+          <mat-error *ngIf="dataFormControl.hasError('required')">
+            дата <strong>обязателна</strong>
+          </mat-error>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width col-12">
           <input name="userEmail" matInput placeholder="Email" [(ngModel)]="user.userEmail" [formControl]="emailFormControl">
@@ -85,7 +93,6 @@
          <div class="class=col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 text-center" style="width: 100%; margin: 3%">
            <a routerLink="/authorization" >Авторизация</a>
          </div>
-
 
         </div>
 
