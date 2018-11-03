@@ -7,7 +7,7 @@ import {UserCardComponent} from './components/user-card/user-card.component';
 const routes: Routes = [
 
   {
-    path: 'registy',
+    path: 'registry',
     component: RegistryComponent
   },
   {

@@ -14,7 +14,7 @@ import {User} from '../../model/User/User';
 })
 
 export class RegistryComponent implements OnInit {
-  private user: User = new User();
+  public user: User = new User();
 
   public strObject: stringObject = new stringObject();
 
@@ -108,7 +108,7 @@ export class RegistryComponent implements OnInit {
       if ( respone.code === 200){
         this.openDialog(
           respone.message,
-          "http://localhost:4200/authorization" );
+           `test-registry/authorization` );
 
       }
       else{

@@ -14,7 +14,7 @@ import { AuthService} from '../../service/authService/auth-service.service';
 export class AuthorizationComponent implements OnInit {
 
 
-  private user: User = new User();
+  public user: User = new User();
   public loginFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(/^[a-z  0-9]{4,20}$/i),
@@ -53,9 +53,12 @@ export class AuthorizationComponent implements OnInit {
       const respone = await this.authService.postAuth(this.user);
 
       if ( respone.code === 200){
+        localStorage.setItem('token', respone.data);
+
+        console.log(JSON.parse(localStorage.getItem('token')));
         this.openDialog(
           respone.message,
-          "http://localhost:4200/authorization" );
+          `test-registry/user` );
 
       }
       else{

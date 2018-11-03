@@ -26,7 +26,7 @@ import {MatNativeDateModule} from '@angular/material';
 
 import {RegistryService} from './service/registryService/registry-service.service';
 import {AuthService} from './service/authService/auth-service.service';
-
+import {UserService} from './service/userService/user-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +56,8 @@ import {AuthService} from './service/authService/auth-service.service';
   ],
   providers: [
     RegistryService,
-    AuthService
+    AuthService,
+    UserService
   ],
 
   bootstrap: [AppComponent]

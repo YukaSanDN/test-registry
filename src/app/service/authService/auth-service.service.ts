@@ -12,12 +12,9 @@ export class AuthService {
   ) { }
 
   postAuth(user: User): Promise< resMessage > {
-    const Body = new HttpParams()
-      .set('login' , user.userLogin )
-      .set('password', user.userPassword);
-
-    return this.hClient.post(`localhost:3000/api/registy`, {
-      body : Body
+    return this.hClient.post(`test-registry/api/registry`, {
+      'login': user.userLogin,
+      'password': user.userPassword
     })
       .toPromise() as Promise<resMessage>;
 
